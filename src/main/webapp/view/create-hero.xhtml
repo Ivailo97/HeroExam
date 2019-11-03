@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="templates/base-layout.xhtml">
+
+    <ui:define name="main-content">
+
+        <main>
+            <h1 class="text-center mt-2">Create Hero</h1>
+            <hr class="hr-3"/>
+            <h:form class="mx-auto w-15">
+                <div class="form-group">
+                    <div class="text-white label-holder d-flex justify-content-center">
+                        <h:outputLabel for="heroName" styleClass="h4 mb-2" value="Hero Name"/>
+                    </div>
+                    <h:inputText styleClass="form-control" id="heroName" value="#{heroCreateBean.model.name}"/>
+
+                </div>
+                <div class="form-group">
+                    <div class="text-white label-holder d-flex justify-content-center">
+                        <label for="heroClass" class="h4 mb-2">Hero Class</label>
+                        <h:outputLabel for="heroClass" styleClass="h4 mb-2" value="Hero Class"/>
+                    </div>
+                    <h:selectOneMenu style="margin-left: 30%; width: 100px;" id="heroClass"
+                                     value="#{heroCreateBean.model.heroClass}">
+                        <f:selectItem itemValue="warrior" itemLabel="Warrior"/>
+                        <f:selectItem itemValue="archer" itemLabel="Archer"/>
+                        <f:selectItem itemValue="mage" itemLabel="Mage"/>
+                    </h:selectOneMenu>
+                </div>
+                <div class="form-group">
+                    <div class="text-white label-holder d-flex justify-content-center">
+                        <h:outputLabel for="level" styleClass="h4 mb-2" value="Level"/>
+                    </div>
+                    <p:inputNumber styleClass="form-control" id="level" value="#{heroCreateBean.model.level}"/>
+
+                </div>
+                <div class="button-holder d-flex justify-content-center">
+
+                    <h:commandButton styleClass="btn btn-info text-white mb-3" value="Create Hero"
+                                     action="#{heroCreateBean.create}"/>
+                </div>
+            </h:form>
+        </main>
+
+    </ui:define>
+</ui:composition>
+</html>

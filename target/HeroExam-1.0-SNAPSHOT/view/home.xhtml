@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="templates/base-layout.xhtml">
+
+    <ui:define name="main-content">
+
+        <main>
+            <div class="text-center mb-3">
+                <h4 class="text-white mt-2">Welcome to the arena, #{session.getAttribute('username')}</h4>
+            </div>
+
+            <hr class="my-3"/>
+            <div class="container">
+                <div class="row mb-4 d-flex justify-content-around">
+
+                    <ui:repeat value="#{homeBean.models}" var="model" varStatus="status">
+
+                        <div class="col-md-4 d-flex flex-column text-center mb-3">
+                            <h:graphicImage library="img" name="#{model.heroClass}.jpg" styleClass="img-thumb" width="300" height="300"/>
+                            <h5 class="text-white text-center">#{model.name}</h5>
+
+                            <h:link outcome="details?id=#{model.id}" styleClass="btn btn-info mb-2"  value="Details"/>
+                            <h:link outcome="delete?id=#{model.id}" styleClass="btn btn-danger"  value="Delete"/>
+
+                        </div>
+
+                    </ui:repeat>
+
+                </div>
+
+            </div>
+        </main>
+    </ui:define>
+</ui:composition>
+</html>
